@@ -1,9 +1,32 @@
 Rails.application.routes.draw do
-  devise_for :users
-  root 'lessons#index'
-  namespace :admin do
-    resources :institutions
-    resources :groups
+  root 'home#index'
+  
+  devise_for :admins, controllers: {
+    sessions: 'admins/sessions'
+  }
+
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+    # ...
+  }
+  devise_scope :admin do
+    unauthenticated do
+      namespace :admin_section do
+        match '(*any)' , to: redirect('/'), via: %i(get post)
+      end
+    end
+
+    authenticated :admin do
+      namespace :admin_section do
+        root 'admin_section#index'
+        resources :lessons
+        resources :subjects
+        resources :institutions
+        resources :groups
+      end
+    end
   end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

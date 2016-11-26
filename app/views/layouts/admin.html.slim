@@ -11,6 +11,13 @@ html lang="en"
     = csrf_meta_tag
 
   body
-    p#notice = notice
-    
-    == yield
+    .off-canvas-wrapper
+      .off-canvas-wrapper-inner data-off-canvas-wrapper="" 
+        .off-canvas.position-left.reveal-for-large aria-hidden="true" data-off-canvas="" data-position="left" 
+          = render 'partials/admin_section/left_nav_bar'  
+
+        .off-canvas-content.admin-section-content data-off-canvas-content=""
+        
+          == yield
+          
+          .js-off-canvas-exit
