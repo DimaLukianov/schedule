@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'home#index'
-  
+
   devise_for :admins, controllers: {
     sessions: 'admins/sessions'
   }
@@ -24,6 +24,8 @@ Rails.application.routes.draw do
         resources :subjects
         resources :institutions
         resources :groups
+        resources :users, only: [:index]
+        patch 'change_user_role', to: 'users#change_role', as: :change_user_role
       end
     end
   end

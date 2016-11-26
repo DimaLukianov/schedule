@@ -51,8 +51,10 @@ ActiveRecord::Schema.define(version: 20161126141644) do
     t.string   "classroom"
     t.integer  "user_id"
     t.integer  "subject_id"
+    t.integer  "group_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.index ["group_id"], name: "index_lessons_on_group_id"
     t.index ["subject_id"], name: "index_lessons_on_subject_id"
     t.index ["user_id"], name: "index_lessons_on_user_id"
   end

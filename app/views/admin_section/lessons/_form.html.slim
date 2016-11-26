@@ -1,14 +1,21 @@
-= form_for [:admin_section, @lesson] do |f|
+= simple_form_for [:admin_section, @lesson] do |f|
   - if @lesson.errors.any?
     #error_explanation
       h2 = "#{pluralize(@lesson.errors.count, "error")} prohibited this lesson from being saved:"
       ul
         - @lesson.errors.full_messages.each do |message|
           li = message
+  .form-inputs
+    = f.association :group
+  .form-inputs
+    = f.association :user, collection: User.teachers.map { |u| [u.full_name, u.id] }, label: 'Teacher'
+  .form-inputs
+    = f.association :subject
+    
 
   .field
-    = f.label :day
-    = f.number_field :day
+
+    = f.input :day, collection: Lesson.days.symbolize_keys.keys
   .field
     = f.label :lesson_number
     = f.number_field :lesson_number
@@ -24,10 +31,4 @@
   .field
     = f.label :classroom
     = f.text_field :classroom
-  .field
-    = f.label :user
-    = f.text_field :user
-  .field
-    = f.label :subject
-    = f.text_field :subject
   .actions = f.submit
