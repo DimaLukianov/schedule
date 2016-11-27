@@ -22,8 +22,8 @@ module AdminSection
 
       respond_to do |format|
         if @group.save
-          format.html { redirect_to admin_group_path(@group), notice: 'Group was successfully created.' }
-          format.json { render :show, status: :created, location: admin_group_path(@group) }
+          format.html { redirect_to admin_section_group_path(@group), notice: 'Group was successfully created.' }
+          format.json { render :show, status: :created, location: admin_section_group_path(@group) }
         else
           format.html { render :new }
           format.json { render json: @group.errors, status: :unprocessable_entity }
@@ -34,8 +34,8 @@ module AdminSection
     def update
       respond_to do |format|
         if @group.update(group_params)
-          format.html { redirect_to admin_group_path(@group), notice: 'Group was successfully updated.' }
-          format.json { render :show, status: :ok, location: admin_group_path(@group) }
+          format.html { redirect_to admin_section_group_path(@group), notice: 'Group was successfully updated.' }
+          format.json { render :show, status: :ok, location: admin_section_group_path(@group) }
         else
           format.html { render :edit }
           format.json { render json: @group.errors, status: :unprocessable_entity }
@@ -46,7 +46,7 @@ module AdminSection
     def destroy
       @group.destroy
       respond_to do |format|
-        format.html { redirect_to admin_groups_url, notice: 'Group was successfully destroyed.' }
+        format.html { redirect_to admin_section_groups_url, notice: 'Group was successfully destroyed.' }
         format.json { head :no_content }
       end
     end

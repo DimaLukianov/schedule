@@ -1,4 +1,4 @@
-= form_for [:admin_section, @subject] do |f|
+= simple_form_for [:admin_section, @subject] do |f|
   - if @subject.errors.any?
     #error_explanation
       h2 = "#{pluralize(@subject.errors.count, "error")} prohibited this subject from being saved:"
@@ -7,9 +7,7 @@
           li = message
 
   .field
-    = f.label :name
-    = f.text_field :name
+    = f.association :institution
   .field
-    = f.label :institution
-    = f.text_field :institution
+    = f.input :name
   .actions = f.submit

@@ -21,8 +21,8 @@ module AdminSection
 
       respond_to do |format|
         if @institution.save
-          format.html { redirect_to admin_institution_path(@institution), notice: 'Institution was successfully created.' }
-          format.json { render :show, status: :created, location: admin_institution_path(@institution) }
+          format.html { redirect_to admin_section_institution_path(@institution), notice: 'Institution was successfully created.' }
+          format.json { render :show, status: :created, location: admin_section_institution_path(@institution) }
         else
           format.html { render :new }
           format.json { render json: @institution.errors, status: :unprocessable_entity }
@@ -33,8 +33,8 @@ module AdminSection
     def update
       respond_to do |format|
         if @institution.update(institution_params)
-          format.html { redirect_to admin_institution_path(@institution), notice: 'Institution was successfully updated.' }
-          format.json { render :show, status: :ok, location: admin_institution_path(@institution) }
+          format.html { redirect_to admin_section_institution_path(@institution), notice: 'Institution was successfully updated.' }
+          format.json { render :show, status: :ok, location: admin_section_institution_path(@institution) }
         else
           format.html { render :edit }
           format.json { render json: @institution.errors, status: :unprocessable_entity }
@@ -45,7 +45,7 @@ module AdminSection
     def destroy
       @institution.destroy
       respond_to do |format|
-        format.html { redirect_to admin_institutions_url, notice: 'Institution was successfully destroyed.' }
+        format.html { redirect_to admin_section_institutions_url, notice: 'Institution was successfully destroyed.' }
         format.json { head :no_content }
       end
     end

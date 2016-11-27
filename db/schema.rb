@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161126141644) do
+ActiveRecord::Schema.define(version: 20161127155510) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -47,12 +47,14 @@ ActiveRecord::Schema.define(version: 20161126141644) do
     t.integer  "lesson_number"
     t.boolean  "odd_week"
     t.integer  "subgroup"
-    t.integer  "type"
+    t.integer  "lesson_type"
     t.string   "classroom"
     t.integer  "user_id"
     t.integer  "subject_id"
+    t.integer  "group_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.index ["group_id"], name: "index_lessons_on_group_id"
     t.index ["subject_id"], name: "index_lessons_on_subject_id"
     t.index ["user_id"], name: "index_lessons_on_user_id"
   end
@@ -81,6 +83,7 @@ ActiveRecord::Schema.define(version: 20161126141644) do
     t.string   "first_name"
     t.string   "last_name"
     t.boolean  "is_teacher",             default: false
+    t.integer  "group_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
