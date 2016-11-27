@@ -4,7 +4,7 @@ html lang="en"
     meta charset="utf-8"
     meta name="viewport" content="width=device-width, initial-scale=1.0"
 
-    title == content_for?(:title) ? yield(:title) : "Untitled"
+    title == content_for?(:title) ? yield(:title) : "Authentication"
 
     = stylesheet_link_tag "application"
     = javascript_include_tag "application", "data-turbolinks-track" => true
@@ -12,15 +12,4 @@ html lang="en"
 
   body
 
-    / == yield
-
-    = render 'partials/header'
-    
-    - if content_for? :top_bar
-      .callout.large
-        .row.column.text-center
-          = yield(:top_bar)
-        
     == yield
-
-    = render 'partials/footer'

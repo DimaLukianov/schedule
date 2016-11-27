@@ -5,7 +5,7 @@ class CreateLessons < ActiveRecord::Migration[5.0]
       t.integer :lesson_number
       t.boolean :odd_week
       t.integer :subgroup
-      t.integer :type
+      t.integer :lesson_type
       t.string :classroom
       t.references :user, foreign_key: true, index: true
       t.references :subject, foreign_key: true, index: true

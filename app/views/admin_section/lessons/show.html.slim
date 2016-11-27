@@ -14,16 +14,16 @@ p
   = @lesson.subgroup
 p
   strong Type:
-  = @lesson.type
+  = @lesson.lesson_type
 p
   strong Classroom:
   = @lesson.classroom
 p
   strong User:
-  = @lesson.user
+  = @lesson.user.full_name
 p
   strong Subject:
-  = @lesson.subject
+  = @lesson.subject.name
 
 = link_to 'Edit', edit_admin_section_lesson_path(@lesson)
 '|

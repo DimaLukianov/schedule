@@ -59,7 +59,7 @@ module AdminSection
       # Never trust parameters from the scary internet, only allow the white list through.
       def lesson_params
         params.require(:lesson).permit(:day, :lesson_number, :odd_week,
-          :subgroup, :type, :classroom, :user_id, :subject_id, :group_id)
+          :subgroup, :lesson_type, :classroom, :user_id, :subject_id, :group_id)
       end
   end
 end

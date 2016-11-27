@@ -1,0 +1,13 @@
+- @schedule.each do |day, lessons|
+  .columns.schedule
+    .text-center
+      h3.subject = day
+    .lesson
+      - lessons.each do |lesson|
+        span.lesson_number = lesson.lesson_number
+        span.subject = lesson.subject.name if lesson.subject
+        .lesson_type = lesson.lesson_type
+        .classroom 
+          b = lesson.classroom
+        .classroom 
+          i = lesson.user.full_name if lesson.user

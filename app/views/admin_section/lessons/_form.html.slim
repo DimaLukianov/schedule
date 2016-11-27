@@ -16,19 +16,14 @@
   .field
 
     = f.input :day, collection: Lesson.days.symbolize_keys.keys
-  .field
-    = f.label :lesson_number
-    = f.number_field :lesson_number
-  .field
-    = f.label :odd_week
-    = f.check_box :odd_week
-  .field
-    = f.label :subgroup
-    = f.number_field :subgroup
-  .field
-    = f.label :type
-    = f.number_field :type
-  .field
-    = f.label :classroom
-    = f.text_field :classroom
-  .actions = f.submit
+  .form-inputs
+    = f.input :lesson_number
+  .form-inputs
+    = f.input :odd_week
+  .form-inputs
+    = f.input :subgroup
+  .form-inputs
+    = f.input :lesson_type, collection: Lesson.lesson_types.symbolize_keys.keys
+  .form-inputs
+    = f.input :classroom
+  .form-actions = f.submit
