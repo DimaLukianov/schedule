@@ -20,7 +20,7 @@ test:
   password: 123456789
 
 production:
-  <<: *default
+  adapter: postgresql
+  encoding: utf8
+  pool: 15
   database: lessons_schedule
-  username: <%= ENV["DATABASE_USERNAME"] %>
-  password: <%= ENV["DATABASE_PASSWORD"] %>
